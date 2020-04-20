@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Recipe from './Components/Recipe';
 import SearchForm from './Components/SearchForm'
-import './App.css';
+import styled from 'styled-components';
+
+
+const AppContainer = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 function App() {
   const APP_ID = "b0347ef9";
@@ -33,7 +41,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <AppContainer>
       <h1>RECIPE APP</h1>
       <SearchForm search={search} updateSearch={updateSearch} updateSearchValue={updateSearchValue}/>
       {recipes.map((recipe, index) => (
@@ -45,7 +53,7 @@ function App() {
           key={index}
         />
       ))}
-    </div>
+    </AppContainer>
   );
 }
 

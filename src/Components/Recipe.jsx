@@ -1,16 +1,28 @@
 import React from 'react';
+import styled from 'styled-components'
+
+const RecipeContainer = styled.div`
+  @media only screen and (min-width: 768px) {
+    width: 50%;
+  }
+`;
+
+const Calories = styled.p `
+  color: brown;
+  font-size: 12px;
+`;
 
 const Recipe = ({title, calories, img, ingredients}) => {
   return ( 
-    <div className="Recipe">
+    <RecipeContainer>
       <h3>{title}</h3>
-      <p className="Highlight">{calories} calories</p>
+      <Calories>{calories} calories</Calories>
       <img src={img} alt={title} />
       <h4>Ingredients:</h4>
       {ingredients.map((para, index) => (
         <p key={index}>{para.text}</p>
       ))}
-    </div>
+    </RecipeContainer>
    );
 }
  
