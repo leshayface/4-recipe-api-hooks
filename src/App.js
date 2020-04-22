@@ -5,10 +5,26 @@ import styled from 'styled-components';
 
 
 const AppContainer = styled.div`
-  text-align: center;
+  align-items: center;
+  background: linear-gradient(to right, #ff512f, #f09819);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 8px;
+  text-align: center;
+
+  @media only screen and (min-width: 320px) {
+    padding: 40px;
+  }
+`;
+
+const Recipes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  @media only screen and (min-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 function App() {
@@ -44,15 +60,17 @@ function App() {
     <AppContainer>
       <h1>RECIPE APP</h1>
       <SearchForm search={search} updateSearch={updateSearch} updateSearchValue={updateSearchValue}/>
-      {recipes.map((recipe, index) => (
-        <Recipe
-          title={recipe.recipe.label}
-          calories={Math.round(recipe.recipe.calories)}
-          img={recipe.recipe.image}
-          ingredients={recipe.recipe.ingredients}
-          key={index}
-        />
-      ))}
+      <Recipes>
+        {recipes.map((recipe, index) => (
+          <Recipe
+            title={recipe.recipe.label}
+            calories={Math.round(recipe.recipe.calories)}
+            img={recipe.recipe.image}
+            ingredients={recipe.recipe.ingredients}
+            key={index}
+          />
+        ))}
+      </Recipes>
     </AppContainer>
   );
 }
