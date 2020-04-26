@@ -37,6 +37,7 @@ function App() {
 
   useEffect(() => {
     getRecipes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue])
 
   const getRecipes = async () => {
@@ -54,6 +55,7 @@ function App() {
   const updateSearchValue = (e) => {
     e.preventDefault();
     setSearchValue(search);
+    search === "" && setSearchValue("salad");
   }
 
   return (
